@@ -157,5 +157,5 @@ This project wouldn't exist without these amazing platforms and their teams. Hug
 ---
 
 <div align="center">
-  <sub>MIT License © 2025 Anubhav Kumar Srivastava</sub>
+  <sub>MIT License © 2026 Anubhav Kumar Srivastava</sub>
 </div>
