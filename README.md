@@ -1,65 +1,110 @@
-# LinkedIn Automation
+<div align="center">
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcW1scWswaHg1bW1mcjFtN2pvcDNsZWV6dmJrMDlkbjVhY2Z0Y2ZsMyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/HQTYdpx1yhxWpugAi2/giphy.gif" width="120" alt="robot"/>
 
-Fully automated LinkedIn content posting system built on [Make.com](https://make.com). Generates and publishes AI-powered text posts, image posts, polls, and video posts on a daily schedule.
+# 🤖 LinkedIn Automation
 
-> **View the live scenario:** [Open in Make.com](https://eu1.make.com/public/shared-scenario/3ZNx5oIbz1W/linked-in-automation)
+**Fully automated LinkedIn content engine — powered by AI, zero manual effort**
+
+[![Make.com](https://img.shields.io/badge/Make.com-6D00CC?style=for-the-badge&logo=make&logoColor=white)](https://eu1.make.com/public/shared-scenario/3ZNx5oIbz1W/linked-in-automation)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anubhav-kumar-srivastava-abb28b239/)
+[![Airforce API](https://img.shields.io/badge/Airforce%20API-000000?style=for-the-badge&logo=fly&logoColor=white)](https://api.airforce)
+[![NVIDIA](https://img.shields.io/badge/NVIDIA-76B900?style=for-the-badge&logo=nvidia&logoColor=white)](https://build.nvidia.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+
+> 🚀 **[View Live Make.com Scenario →](https://eu1.make.com/public/shared-scenario/3ZNx5oIbz1W/linked-in-automation)**
+
+</div>
 
 ---
 
-## Architecture
+## ✨ What it does
+
+This automation runs **every day at 11:00 AM** and posts AI-generated content to LinkedIn — completely hands-free. Different content type every day of the week.
+
+| Day | Post Type | Pipeline |
+|-----|-----------|----------|
+| 🟣 **Monday** | AI Text Post | Airforce API → Clean → Post |
+| 🟣 **Tuesday** | AI Text Post | Airforce API → Clean → Post |
+| 🟢 **Wednesday** | AI Image Post | NVIDIA SD → ImgBB → Post |
+| 🟢 **Thursday** | AI Image Post | NVIDIA SD → ImgBB → Post |
+| 🔴 **Friday** | AI Poll Post | Airforce API → Parser → Post |
+| 🔴 **Saturday** | AI Poll Post | Airforce API → Parser → Post |
+| 🎬 **Sunday** | AI Video Post | BGM → Freepik → json2video → Post |
+
+---
+
+## 🏗️ Architecture
+
+![Architecture](architecture/linkedIn_automation_architecture.svg)
+## ⚡ Tech Stack
+
+<div align="center">
+
+| Platform | Role | Badge |
+|----------|------|-------|
+| Make.com | Automation engine | [![Make](https://img.shields.io/badge/Make.com-Scenario-6D00CC?style=flat-square&logo=make)](https://make.com) |
+| Airforce API | AI text generation | [![Airforce](https://img.shields.io/badge/Airforce%20API-llama--4--maverick-000000?style=flat-square)](https://api.airforce) |
+| NVIDIA | Stable Diffusion image gen | [![NVIDIA](https://img.shields.io/badge/NVIDIA-Stable%20Diffusion-76B900?style=flat-square&logo=nvidia)](https://build.nvidia.com) |
+| ImgBB | Image hosting | [![ImgBB](https://img.shields.io/badge/ImgBB-Image%20Host-1A73E8?style=flat-square)](https://imgbb.com) |
+| Freepik | Video asset gen | [![Freepik](https://img.shields.io/badge/Freepik-Assets-1273EB?style=flat-square)](https://freepik.com) |
+| json2video | Video composition | [![json2video](https://img.shields.io/badge/json2video-Video%20API-FF6B35?style=flat-square)](https://json2video.com) |
+| LinkedIn API | Publishing | [![LinkedIn](https://img.shields.io/badge/LinkedIn-API-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com) |
+
+</div>
+
+---
+
+## 🚀 Quick Start
+
+### 1. Import the scenario
+```
+https://eu1.make.com/public/shared-scenario/3ZNx5oIbz1W/linked-in-automation
+```
+Open Make.com → New Scenario → Import Blueprint → paste shared link
+
+### 2. Add API keys
+
+```json
+{
+  "airforce_api_key":    "Bearer sk-air-xxxx  →  panel.api.airforce/dashboard",
+  "nvidia_api_key":      "Bearer nvapi-xxxx   →  build.nvidia.com",
+  "imgbb_api_key":       "xxxx                →  api.imgbb.com",
+  "freepik_api_key":     "Bearer xxxx         →  freepik.com/api",
+  "json2video_api_key":  "xxxx                →  json2video.com"
+}
+```
+
+### 3. Connect LinkedIn
+Open any LinkedIn module → **Add connection** → Authorize with your account
+
+### 4. Set router filters
 
 ```
-Scheduler (Airforce API — text generation)
-    → Text parser (remove \n)
-    → Text parser (remove ")
-    → Text parser (remove ')
-    → Router
-        ├── Mon + Tue  → LinkedIn text post
-        ├── Wed + Thu  → NVIDIA Stable Diffusion → ImgBB → LinkedIn image post
-        ├── Fri + Sat  → HTTP POST (poll gen) → LinkedIn poll post
-        └── Sunday     → Tools (BGM) → Freepik + json2video → Sleep → HTTP GET → LinkedIn video post
+formatDate(now; "e") = 1 or 2   →  Text post   (Mon, Tue)
+formatDate(now; "e") = 3 or 4   →  Image post  (Wed, Thu)
+formatDate(now; "e") = 5 or 6   →  Poll post   (Fri, Sat)
+formatDate(now; "e") = 7        →  Video post  (Sun)
 ```
 
----
-
-## Weekly Schedule
-
-| Day | Post Type | APIs Used |
-|---|---|---|
-| Monday | AI text post | Airforce API |
-| Tuesday | AI text post | Airforce API |
-| Wednesday | AI image post | NVIDIA Stable Diffusion, ImgBB |
-| Thursday | AI image post | NVIDIA Stable Diffusion, ImgBB |
-| Friday | AI poll post | Airforce API |
-| Saturday | AI poll post | Airforce API |
-| Sunday | AI video post | Freepik, json2video |
+### 5. Enable schedule
+Set to **Daily at 11:00 AM** — done! 🎉
 
 ---
 
-## APIs Used
-
-| Service | Purpose | Method |
-|---|---|---|
-| [Airforce API](https://api.airforce) | Generate LinkedIn post text | POST |
-| [NVIDIA Stable Diffusion](https://integrate.api.nvidia.com) | Generate images | POST |
-| [ImgBB](https://api.imgbb.com) | Host generated images | POST |
-| [Freepik](https://api.freepik.com) | Generate video assets | POST |
-| [json2video](https://api.json2video.com) | Compose video | POST |
-| [LinkedIn API](https://api.linkedin.com) | Publish posts | POST |
-
----
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 linkedin-automation/
 ├── README.md
+├── .gitignore
 ├── docs/
 │   └── architecture.svg
 ├── config/
 │   ├── router-filters.json
 │   ├── linkedin-config.json
-│   └── text-parser-config.json
+│   ├── text-parser-config.json
+│   ├── poll-parser-config.json
+│   └── api-keys.template.json
 ├── http-requests/
 │   ├── airforce-text.json
 │   ├── nvidia-image.json
@@ -76,42 +121,40 @@ linkedin-automation/
 
 ---
 
-## Setup Guide
+## 🙏 Acknowledgements
 
-### 1. Import scenario
-1. Go to [make.com](https://make.com)
-2. Create a new scenario
-3. Click 3 dots → Import blueprint
-4. Use the shared link: https://eu1.make.com/public/shared-scenario/3ZNx5oIbz1W/linked-in-automation
+This project wouldn't exist without these amazing platforms and their teams. Huge gratitude to:
 
-### 2. Add API keys
+| Platform | Why I'm grateful |
+|----------|-----------------|
+| 💜 **[Make.com](https://make.com)** | For making no-code automation genuinely powerful and accessible. The visual scenario builder is a work of art. |
+| ✈️ **[Airforce API](https://api.airforce)** | For providing a fast, reliable, and affordable AI gateway with an incredible model selection. |
+| 🟢 **[NVIDIA](https://build.nvidia.com)** | For democratizing access to Stable Diffusion and world-class AI models through their API platform. |
+| 📸 **[ImgBB](https://imgbb.com)** | For the simplest and most reliable free image hosting API out there. |
+| 🎨 **[Freepik](https://freepik.com)** | For providing powerful AI creative tools that make video generation possible. |
+| 🎬 **[json2video](https://json2video.com)** | For making video creation as simple as writing JSON. Truly impressive technology. |
+| 💼 **[LinkedIn](https://linkedin.com)** | For providing a robust API that makes programmatic publishing possible. |
 
-| Module | Header | Source |
-|---|---|---|
-| HTTP 3 — Airforce | `Authorization: Bearer YOUR_KEY` | [panel.api.airforce](https://panel.api.airforce/dashboard/) |
-| HTTP 19 — NVIDIA | `Authorization: Bearer YOUR_KEY` | [build.nvidia.com](https://build.nvidia.com) |
-| HTTP 27 — ImgBB | Query param `key` | [api.imgbb.com](https://api.imgbb.com) |
-| HTTP 32 — Poll | `Authorization: Bearer YOUR_KEY` | Same as Airforce |
-| Freepik | `Authorization: Bearer YOUR_KEY` | [freepik.com/api](https://www.freepik.com/api) |
-| json2video | `x-api-key: YOUR_KEY` | [json2video.com](https://json2video.com) |
-
-### 3. Connect LinkedIn
-Open any LinkedIn module → Add connection → Authorize.
-
-### 4. Router filter conditions
-
-| Route | Filter | Value |
-|---|---|---|
-| Text post | `{{formatDate(now; "e")}}` equal to | `1` or `2` |
-| Image post | `{{formatDate(now; "e")}}` equal to | `3` or `4` |
-| Poll post | `{{formatDate(now; "e")}}` equal to | `5` or `6` |
-| Video post | `{{formatDate(now; "e")}}` equal to | `7` |
-
-### 5. Enable schedule
-Set to **Daily at 11:00 AM**.
+> *"What I cannot create, I do not understand."* — Richard Feynman
 
 ---
 
-## License
+## 📬 Connect with me
 
-MIT
+<div align="center">
+
+[![LinkedIn](https://img.shields.io/badge/Anubhav%20Kumar%20Srivastava-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anubhav-kumar-srivastava-abb28b239/)
+
+**Built with ❤️ by [Anubhav Kumar Srivastava](https://www.linkedin.com/in/anubhav-kumar-srivastava-abb28b239/)**
+
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcW1scWswaHg1bW1mcjFtN2pvcDNsZWV6dmJrMDlkbjVhY2Z0Y2ZsMyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/stdqoZQtv5JVM1mI1j/giphy.gif" width="120" alt="thank you"/>
+
+*If this project helped you, consider giving it a ⭐ on GitHub!*
+
+</div>
+
+---
+
+<div align="center">
+  <sub>MIT License © 2025 Anubhav Kumar Srivastava</sub>
+</div>
