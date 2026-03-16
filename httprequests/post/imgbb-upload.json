@@ -1,0 +1,16 @@
+{
+  "name": "HTTP 27 — ImgBB image upload",
+  "method": "POST",
+  "url": "https://api.imgbb.com/1/upload",
+  "query_params": {
+    "key": "YOUR_IMGBB_API_KEY"
+  },
+  "body_type": "urlEncoded",
+  "body": {
+    "image": "{{19.data.image}}"
+  },
+  "parse_response": true,
+  "make_module_id": 27,
+  "output_mapping": "{{27.data.data.url}}",
+  "note": "Uploads base64 image from NVIDIA — returns public HTTPS URL for LinkedIn image post"
+}

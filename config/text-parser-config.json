@@ -1,0 +1,35 @@
+{
+  "name": "Text parser — replace rules (3 sequential modules)",
+  "purpose": "Clean AI-generated text before routing — removes characters that break LinkedIn post formatting",
+  "modules": [
+    {
+      "id": 8,
+      "type": "Text parser — Replace",
+      "order": 1,
+      "input": "{{3.choices[].message.content}}",
+      "pattern": "\\n",
+      "replacement": " ",
+      "note": "Removes literal newline characters from AI output"
+    },
+    {
+      "id": 28,
+      "type": "Text parser — Replace",
+      "order": 2,
+      "input": "{{8.result}}",
+      "pattern": "\"",
+      "replacement": "",
+      "note": "Removes double quotes that can break JSON or display oddly"
+    },
+    {
+      "id": 40,
+      "type": "Text parser — Replace",
+      "order": 3,
+      "input": "{{28.result}}",
+      "pattern": "'",
+      "replacement": "",
+      "note": "Removes single quotes — final cleaned text passed to router"
+    }
+  ],
+  "output_mapping": "{{40.result}}",
+  "used_in": ["LinkedIn text post content", "NVIDIA image prompt", "poll topic variable"]
+}

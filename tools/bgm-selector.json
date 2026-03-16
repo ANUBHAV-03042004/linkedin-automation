@@ -1,0 +1,18 @@
+{
+  "name": "Tools — BGM selector",
+  "type": "Set variable",
+  "route": "Video Day — Sunday",
+  "purpose": "Selects a background music URL to inject into the json2video scene audio element",
+  "config": {
+    "variable_name": "bgm_url",
+    "variable_lifetime": "roundtrip",
+    "variable_value": "https://your-bgm-source.com/track.mp3"
+  },
+  "suggested_bgm_sources": [
+    "https://pixabay.com/music/ — free royalty-free music",
+    "https://freemusicarchive.org — CC licensed tracks",
+    "https://soundcloud.com — if using API access"
+  ],
+  "output_mapping": "{{bgm_selector_module.bgm_url}}",
+  "used_in": "json2video-create.json — scenes[].elements audio src"
+}

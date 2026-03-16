@@ -1,0 +1,8 @@
+{
+  "module": "tools:SetVariableTransformer",
+  "label": "Tools 31 — Set poll_topic variable",
+  "variable_name": "poll_topic",
+  "variable_lifetime": "roundtrip",
+  "variable_value": "{{3.choices[].message.content}}",
+  "notes": "Stores HTTP 3 output as a named variable so it can be safely injected into HTTP 32 JSON body without breaking JSON formatting. Used on Fri+Sat route only."
+}

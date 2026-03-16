@@ -1,0 +1,32 @@
+{
+  "note": "Never commit real API keys. Replace all values below with your actual keys in Make.com HTTP module headers.",
+  "airforce": {
+    "header_name": "Authorization",
+    "header_value": "Bearer YOUR_AIRFORCE_API_KEY",
+    "dashboard": "https://panel.api.airforce/dashboard"
+  },
+  "nvidia": {
+    "header_name": "Authorization",
+    "header_value": "Bearer YOUR_NVIDIA_API_KEY",
+    "dashboard": "https://build.nvidia.com"
+  },
+  "imgbb": {
+    "query_param": "key",
+    "value": "YOUR_IMGBB_API_KEY",
+    "dashboard": "https://api.imgbb.com"
+  },
+  "freepik": {
+    "header_name": "x-freepik-api-key",
+    "header_value": "YOUR_FREEPIK_API_KEY",
+    "dashboard": "https://www.freepik.com/api"
+  },
+  "json2video": {
+    "header_name": "x-api-key",
+    "header_value": "YOUR_JSON2VIDEO_API_KEY",
+    "dashboard": "https://json2video.com/dashboard"
+  },
+  "linkedin": {
+    "note": "LinkedIn uses OAuth via Make.com connection. No manual key needed.",
+    "setup": "Open any LinkedIn module in Make.com → Add connection → Login"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "HTTP — Freepik video asset generation",
+  "method": "POST",
+  "url": "https://api.freepik.com/v1/ai/video",
+  "headers": {
+    "Authorization": "Bearer YOUR_FREEPIK_API_KEY",
+    "Content-Type": "application/json",
+    "x-freepik-api-key": "YOUR_FREEPIK_API_KEY"
+  },
+  "body": {
+    "prompt": "{{3.choices[].message.content}}",
+    "style": "professional",
+    "duration": 15,
+    "resolution": "1080p"
+  },
+  "parse_response": true,
+  "note": "Generates video assets based on AI text — used alongside json2video in Sunday route"
+}

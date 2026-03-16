@@ -1,0 +1,21 @@
+{
+  "name": "HTTP 19 — NVIDIA Stable Diffusion image generation",
+  "method": "POST",
+  "url": "https://ai.api.nvidia.com/v1/genai/stabilityai/stable-diffusion-3-medium",
+  "headers": {
+    "Authorization": "Bearer YOUR_NVIDIA_API_KEY",
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "prompt": "Professional LinkedIn banner illustration representing: {{3.choices[].message.content}} — clean corporate style, abstract technology background, blue and white colors, modern minimalist design",
+    "cfg_scale": 5,
+    "aspect_ratio": "1:1",
+    "seed": 0,
+    "steps": 28,
+    "negative_prompt": "text, watermark, low quality, words, letters, people"
+  },
+  "parse_response": true,
+  "make_module_id": 19,
+  "output_mapping": "{{19.data.image}}",
+  "note": "Returns base64 image string — passed to ImgBB upload"
+}

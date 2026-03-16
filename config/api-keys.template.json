@@ -1,0 +1,9 @@
+{
+  "_note": "Copy this file to secrets.json and fill in your keys. Never commit secrets.json to git.",
+  "airforce_api_key": "YOUR_AIRFORCE_API_KEY",
+  "nvidia_api_key": "YOUR_NVIDIA_API_KEY",
+  "imgbb_api_key": "YOUR_IMGBB_API_KEY",
+  "freepik_api_key": "YOUR_FREEPIK_API_KEY",
+  "json2video_api_key": "YOUR_JSON2VIDEO_API_KEY",
+  "linkedin_access_token": "Managed via Make.com connection — no manual key needed"
+}

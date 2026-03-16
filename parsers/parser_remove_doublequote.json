@@ -1,0 +1,12 @@
+{
+  "module": "regexp:Parser",
+  "label": "Text parser 2 — remove double quotes",
+  "type": "replace",
+  "pattern": "\"",
+  "replacement": "",
+  "global": true,
+  "multiline": false,
+  "case_sensitive": false,
+  "input": "{{[previous_parser].result}}",
+  "notes": "Second parser. Removes all double quote characters from AI output. Feeds into parser 3."
+}

@@ -1,0 +1,12 @@
+{
+  "module": "regexp:Parser",
+  "label": "Text parser 3 — remove single quotes",
+  "type": "replace",
+  "pattern": "'",
+  "replacement": "",
+  "global": true,
+  "multiline": false,
+  "case_sensitive": false,
+  "input": "{{[previous_parser].result}}",
+  "notes": "Third and final cleaning parser. Removes all single quote characters. Output of this parser goes to the Router and is used as the clean post content."
+}

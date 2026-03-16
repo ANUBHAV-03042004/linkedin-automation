@@ -1,0 +1,23 @@
+{
+  "name": "HTTP 3 — Airforce AI text generation",
+  "method": "POST",
+  "url": "https://api.airforce/v1/chat/completions",
+  "headers": {
+    "Authorization": "Bearer YOUR_AIRFORCE_API_KEY",
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "model": "llama-4-maverick",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Write a professional LinkedIn post about one of these topics (pick randomly): AI trends, coding tips, student life in tech, project updates, career advice. Keep it under 150 words, professional tone, end with 3 relevant hashtags."
+      }
+    ],
+    "max_tokens": 300,
+    "stream": false
+  },
+  "parse_response": true,
+  "make_module_id": 3,
+  "output_mapping": "{{3.choices[].message.content}}"
+}

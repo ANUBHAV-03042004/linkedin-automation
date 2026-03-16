@@ -1,0 +1,7 @@
+{
+  "module": "tools:SleepTransformer",
+  "label": "Tools — sleep 30 seconds",
+  "delay": 30,
+  "unit": "seconds",
+  "notes": "Waits 30 seconds after json2video POST request to allow the video to finish rendering before the HTTP GET request fetches the final video URL. Increase to 60 if video is longer or rendering is slow."
+}

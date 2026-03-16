@@ -1,0 +1,10 @@
+{
+  "trigger": {
+    "type": "schedule",
+    "interval": "daily",
+    "time": "11:00",
+    "timezone": "Asia/Kolkata",
+    "enabled": true
+  },
+  "note": "Set this in Make.com by clicking the clock icon on the left of your scenario canvas."
+}

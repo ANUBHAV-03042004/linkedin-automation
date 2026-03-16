@@ -1,0 +1,12 @@
+{
+  "module": "regexp:Parser",
+  "label": "Text parser 1 — remove \\n",
+  "type": "replace",
+  "pattern": "\\\\n",
+  "replacement": " ",
+  "global": true,
+  "multiline": false,
+  "case_sensitive": false,
+  "input": "{{3.choices[].message.content}}",
+  "notes": "First parser in the chain. Removes literal backslash-n sequences that AI models sometimes include in output. Feeds into parser 2."
+}

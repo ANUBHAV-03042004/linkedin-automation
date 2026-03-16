@@ -1,0 +1,13 @@
+{
+  "name": "Tools — Set variable (module 31)",
+  "type": "Set variable",
+  "route": "Poll Day — Fri + Sat",
+  "purpose": "Stores the cleaned AI text as a named variable so it can be referenced in the poll HTTP module body without breaking JSON string formatting",
+  "config": {
+    "variable_name": "poll_topic",
+    "variable_lifetime": "roundtrip",
+    "variable_value": "{{3.choices[].message.content}}"
+  },
+  "output_mapping": "{{31.poll_topic}}",
+  "used_in": "HTTP 32 poll generation body — content field"
+}

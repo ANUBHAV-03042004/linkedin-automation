@@ -1,0 +1,24 @@
+{
+  "name": "HTTP 32 — AI poll generation",
+  "method": "POST",
+  "url": "https://api.airforce/v1/chat/completions",
+  "headers": {
+    "Authorization": "Bearer YOUR_AIRFORCE_API_KEY",
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "model": "llama-4-maverick",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Generate a LinkedIn poll about this topic: {{31.poll_topic}}. Return ONLY these 5 lines with no extra text:\nQUESTION: write question here\nOPT1: first option\nOPT2: second option\nOPT3: third option\nOPT4: fourth option"
+      }
+    ],
+    "max_tokens": 150,
+    "stream": false
+  },
+  "parse_response": true,
+  "make_module_id": 32,
+  "output_mapping": "{{32.choices[].message.content}}",
+  "depends_on": "module 31 (set-variable) must run first to populate poll_topic"
+}

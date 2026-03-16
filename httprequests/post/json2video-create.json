@@ -1,0 +1,37 @@
+{
+  "name": "HTTP — json2video video creation",
+  "method": "POST",
+  "url": "https://api.json2video.com/v2/movies",
+  "headers": {
+    "x-api-key": "YOUR_JSON2VIDEO_API_KEY",
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "template": "linkedin-promo",
+    "resolution": "full-hd",
+    "quality": 9,
+    "scenes": [
+      {
+        "comment": "Main scene",
+        "duration": 10,
+        "elements": [
+          {
+            "type": "text",
+            "text": "{{3.choices[].message.content}}",
+            "style": "professional",
+            "font-size": 40,
+            "color": "#ffffff"
+          },
+          {
+            "type": "audio",
+            "src": "{{bgm_url}}",
+            "volume": 0.5
+          }
+        ]
+      }
+    ]
+  },
+  "parse_response": true,
+  "output_mapping": "movie.id",
+  "note": "Returns movie ID — used in video-url-fetch.json after Tools sleep module"
+}

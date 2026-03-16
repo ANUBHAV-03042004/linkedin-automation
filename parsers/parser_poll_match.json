@@ -1,0 +1,22 @@
+{
+  "module": "regexp:Parser",
+  "label": "Text parser 35 — match poll pattern",
+  "type": "match",
+  "pattern": "QUESTION: (.+)\\nOPT1: (.+)\\nOPT2: (.+)\\nOPT3: (.+)\\nOPT4: (.+)",
+  "global": false,
+  "multiline": true,
+  "case_sensitive": false,
+  "continue_when_no_result": false,
+  "input": "{{32.choices[].message.content}}",
+  "captured_groups": {
+    "$1": "Poll question",
+    "$2": "Option 1",
+    "$3": "Option 2",
+    "$4": "Option 3",
+    "$5": "Option 4"
+  },
+  "usage_in_linkedin": {
+    "content": "🗳️ POLL: {{35.$1}}\n\nA) {{35.$2}}\nB) {{35.$3}}\nC) {{35.$4}}\nD) {{35.$5}}\n\nComment your answer! 👇\n\n#Poll #Tech #LinkedIn"
+  },
+  "notes": "Used on Fri+Sat route. Parses structured poll output from HTTP 32. Groups $1-$5 map to question and 4 options."
+}

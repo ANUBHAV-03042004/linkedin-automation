@@ -1,0 +1,22 @@
+{
+  "module": "tools:SetVariableTransformer",
+  "label": "Tools — BGM selector",
+  "variable_name": "bgm_url",
+  "variable_lifetime": "roundtrip",
+  "variable_value": "{{choose(1; \"https://cdn.pixabay.com/audio/2022/08/02/audio_884fe92c21.mp3\"; \"https://cdn.pixabay.com/audio/2022/03/10/audio_c8c8a73467.mp3\"; \"https://cdn.pixabay.com/audio/2021/11/01/audio_cb4f5bc27c.mp3\")}}",
+  "available_tracks": [
+    {
+      "name": "Corporate upbeat",
+      "url": "https://cdn.pixabay.com/audio/2022/08/02/audio_884fe92c21.mp3"
+    },
+    {
+      "name": "Ambient tech",
+      "url": "https://cdn.pixabay.com/audio/2022/03/10/audio_c8c8a73467.mp3"
+    },
+    {
+      "name": "Motivational",
+      "url": "https://cdn.pixabay.com/audio/2021/11/01/audio_cb4f5bc27c.mp3"
+    }
+  ],
+  "notes": "Randomly selects a background music track from royalty-free options. Used on Sunday video route. Replace URLs with your own audio files if needed."
+}

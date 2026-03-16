@@ -1,0 +1,30 @@
+{
+  "name": "Text parser 35 — Match pattern (poll extraction)",
+  "type": "Text parser — Match pattern",
+  "route": "Poll Day — Fri + Sat",
+  "purpose": "Extracts poll question and 4 options from the structured AI response",
+  "config": {
+    "pattern": "QUESTION: (.+)\\nOPT1: (.+)\\nOPT2: (.+)\\nOPT3: (.+)\\nOPT4: (.+)",
+    "global_match": false,
+    "case_sensitive": false,
+    "multiline": true,
+    "singleline": false,
+    "continue_when_no_match": false,
+    "text": "{{32.choices[].message.content}}"
+  },
+  "output_groups": {
+    "$1": "Poll question",
+    "$2": "Option 1",
+    "$3": "Option 2",
+    "$4": "Option 3",
+    "$5": "Option 4"
+  },
+  "output_mapping": {
+    "question": "{{35.$1}}",
+    "option1": "{{35.$2}}",
+    "option2": "{{35.$3}}",
+    "option3": "{{35.$4}}",
+    "option4": "{{35.$5}}"
+  },
+  "used_in": "LinkedIn poll text post content field"
+}

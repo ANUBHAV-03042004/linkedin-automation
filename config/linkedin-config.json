@@ -1,0 +1,47 @@
+{
+  "name": "LinkedIn module configurations",
+  "connection": "LinkedIn OAuth2 — connect via Make.com Connections",
+  "modules": [
+    {
+      "id": 5,
+      "type": "Create a User Text Post",
+      "route": "Text Day — Mon + Tue",
+      "fields": {
+        "content": "{{3.choices[].message.content}}",
+        "visibility": "PUBLIC"
+      }
+    },
+    {
+      "id": 26,
+      "type": "Create a User Image Post",
+      "route": "Image Day — Wed + Thu",
+      "fields": {
+        "image_url": "{{27.data.data.url}}",
+        "title": "AI Generated Post",
+        "alt_text": "AI GENERATED POST",
+        "content": "{{3.choices[].message.content}}",
+        "visibility": "PUBLIC"
+      }
+    },
+    {
+      "id": 38,
+      "type": "Create a User Text Post",
+      "route": "Poll Day — Fri + Sat",
+      "fields": {
+        "content": "🗳️ POLL: {{35.$1}}\n\nA) {{35.$2}}\nB) {{35.$3}}\nC) {{35.$4}}\nD) {{35.$5}}\n\nComment with your answer! 👇\n\n#Poll #Tech #LinkedIn",
+        "visibility": "PUBLIC"
+      },
+      "note": "LinkedIn native poll API requires app approval — formatted as text post instead"
+    },
+    {
+      "id": "video_module",
+      "type": "Create a User Video Post",
+      "route": "Video Day — Sunday",
+      "fields": {
+        "video_url": "{{video_fetch_module.movie.url}}",
+        "title": "{{3.choices[].message.content}}",
+        "visibility": "PUBLIC"
+      }
+    }
+  ]
+}

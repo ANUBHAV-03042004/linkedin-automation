@@ -1,0 +1,12 @@
+{
+  "name": "Tools — Sleep",
+  "type": "Sleep",
+  "route": "Video Day — Sunday",
+  "purpose": "Waits for json2video to finish rendering before fetching the video URL",
+  "config": {
+    "delay": 30,
+    "unit": "seconds"
+  },
+  "position": "After json2video POST, before HTTP GET fetch",
+  "note": "json2video rendering typically takes 15-60 seconds depending on video length and quality. Increase delay if video URL fetch returns empty or 404."
+}
