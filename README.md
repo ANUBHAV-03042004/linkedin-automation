@@ -35,6 +35,7 @@ This automation runs **every day at 11:00 AM** and posts AI-generated content to
 
 ## 🏗️ Architecture
 
+![Architecture](architecture/linkedIn_automation.png)
 ![Architecture](architecture/linkedIn_automation_architecture.svg)
 ## ⚡ Tech Stack
 
